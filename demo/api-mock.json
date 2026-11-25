@@ -1,0 +1,28 @@
+{
+ "azi": 5,
+ "zile": {
+  "1": {
+   "emoji": "🎄"
+  },
+  "2": {
+   "emoji": "❄️"
+  },
+  "3": {
+   "emoji": "⭐"
+  },
+  "4": {
+   "emoji": "🎁"
+  },
+  "5": {
+   "emoji": "🦌",
+   "forma": "glob",
+   "culoare": "#1d4f91",
+   "mare": "-25%",
+   "mic": "bradul Frasin",
+   "text": "Doar azi, Bradul Frasin cu 25% reducere. Exemplu — textul real îl puneți voi.",
+   "cod": "ADVENT05",
+   "link": "https://sersimo.ro/?s=frasin&post_type=product",
+   "buton": "Vezi bradul"
+  }
+ }
+}

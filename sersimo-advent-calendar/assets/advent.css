@@ -1,0 +1,129 @@
+/* Sersimo Advent — stiluri (încărcate doar odată cu calendarul). Totul e scopat pe .ssadv-* */
+.ssadv-lock{overflow:hidden}
+.ssadv-dlg{--g:#0f3d2e;--g2:#17573f;--gold:#e9c46a;--pink:#c31c72;--cream:#fff8ec;
+  border:0;padding:0;margin:auto;background:transparent;color:#fff;overflow:visible;
+  width:min(540px,calc(100vw - 16px));max-width:none;max-height:none;
+  font-family:Oswald,"Arial Narrow",system-ui,sans-serif}
+.ssadv-dlg::backdrop{background:rgba(6,22,16,.66)}
+.ssadv-dlg *{box-sizing:border-box}
+.ssadv-box{position:relative;border-radius:22px;padding:30px 20px 18px;max-height:calc(100dvh - 16px);overflow-y:auto;overscroll-behavior:contain;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(255,255,255,.07) 0 1.5px,transparent 2.5px) 0 0/46px 46px,
+    radial-gradient(circle at 70% 80%,rgba(255,255,255,.05) 0 1px,transparent 2px) 0 0/31px 31px,
+    linear-gradient(160deg,#145039,var(--g) 55%,#0b2c21);
+  box-shadow:0 24px 70px rgba(0,0,0,.5),inset 0 0 0 1px rgba(233,196,106,.25)}
+.ssadv-dlg[open] .ssadv-box{animation:ssadv-pop .38s cubic-bezier(.2,.9,.3,1.15)}
+@keyframes ssadv-pop{from{transform:translateY(18px) scale(.94);opacity:0}}
+
+/* ghirlanda */
+.ssadv-lights{position:absolute;top:2px;left:26px;right:26px;height:24px;display:flex;justify-content:space-between;pointer-events:none}
+.ssadv-lights::before{content:"";position:absolute;left:-6px;right:-6px;top:-6px;height:16px;border-bottom:1.5px solid rgba(0,0,0,.55);border-radius:0 0 50% 50%}
+.ssadv-lights span{position:relative;width:8px;height:12px;border-radius:50% 50% 45% 45%;box-shadow:0 0 8px 1px currentColor;animation:ssadv-tw 1.85s ease-in-out infinite alternate}
+@keyframes ssadv-tw{to{opacity:.35;box-shadow:none}}
+
+.ssadv-x{position:absolute;top:12px;right:12px;z-index:2;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.ssadv-x:hover{background:rgba(255,255,255,.22)}
+.ssadv-dlg button:focus-visible,.ssadv-dlg a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.ssadv-h{text-align:center;margin:6px 40px 16px}
+.ssadv-h small{display:block;color:var(--gold);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.ssadv-h h2{margin:2px 0 0;color:#fff;font-family:inherit;font-size:28px;font-weight:600;line-height:1.1;letter-spacing:.03em;text-transform:uppercase}
+
+/* uși */
+.ssadv-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
+.ssadv-door{position:relative;aspect-ratio:1/1.12;padding:0;border:0;border-radius:10px;background:none;color:inherit;font:inherit;cursor:pointer;perspective:420px;-webkit-tap-highlight-color:transparent}
+.ssadv-in,.ssadv-leaf{position:absolute;inset:0;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.ssadv-in{background:#08241a;box-shadow:inset 0 3px 10px rgba(0,0,0,.6);font-size:26px}
+.ssadv-leaf{background:linear-gradient(145deg,#1d6a4d,var(--g2));border:1px solid rgba(233,196,106,.4);transform-origin:left center;
+  transition:transform .65s cubic-bezier(.3,.75,.25,1),opacity .25s ease .45s;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.ssadv-leaf::after{content:"";position:absolute;right:6px;top:50%;width:3px;height:12px;margin-top:-6px;border-radius:2px;background:var(--gold);opacity:.55}
+.ssadv-leaf b{font-size:22px;font-weight:600;color:var(--gold)}
+.ssadv-door:hover .ssadv-leaf{transform:rotateY(-14deg)}
+.ssadv-door.is-open .ssadv-leaf{transform:rotateY(-100deg);opacity:0;box-shadow:none}
+.ssadv-door.is-locked .ssadv-leaf b{opacity:.5}
+.ssadv-door.is-locked:hover .ssadv-leaf{transform:none}
+.ssadv-door.is-missed .ssadv-leaf{background:#244a3d;border-color:rgba(255,255,255,.12)}
+.ssadv-door.is-missed .ssadv-leaf b{color:rgba(255,255,255,.35)}
+.ssadv-door.is-missed:hover .ssadv-leaf{transform:none}
+.ssadv-door.is-past .ssadv-in{opacity:.55}
+
+.ssadv-door.is-today{z-index:1}
+.ssadv-door.is-today .ssadv-leaf{background:linear-gradient(145deg,#e0388e,var(--pink));border:1.5px solid #ffd98a}
+.ssadv-door.is-today .ssadv-leaf b{color:#fff;font-size:26px}
+.ssadv-door.is-today::before{content:"";position:absolute;inset:-5px;border-radius:14px;box-shadow:0 0 22px 6px rgba(255,110,185,.85),0 0 0 2px rgba(255,217,138,.9);animation:ssadv-glow 1.6s ease-in-out infinite alternate;pointer-events:none}
+.ssadv-door.is-today.is-open::before{opacity:.35;animation:none}
+.ssadv-door.is-today .ssadv-in{background:#3b0b25}
+@keyframes ssadv-glow{from{opacity:.35}to{opacity:1}}
+.ssadv-tag{position:absolute;top:5px;left:50%;transform:translateX(-50%);padding:1px 6px;border-radius:6px;background:#ffd98a;color:#5a1236;font:600 10px/1.4 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.ssadv-shake{animation:ssadv-shake .4s}
+@keyframes ssadv-shake{20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+
+.ssadv-msg{min-height:22px;margin:16px 0 2px;text-align:center;font:15px/1.4 system-ui,sans-serif;color:rgba(255,255,255,.9)}
+.ssadv-msg b{color:var(--gold)}
+
+/* cupon */
+.ssadv-cv{text-align:center;animation:ssadv-fade .4s both}
+@keyframes ssadv-fade{from{opacity:0;transform:scale(.96)}}
+.ssadv-back{position:absolute;top:12px;left:12px;z-index:2;height:36px;padding:0 14px;border:0;border-radius:18px;background:rgba(255,255,255,.12);color:#fff;font:15px/1 system-ui,sans-serif;cursor:pointer}
+.ssadv-back:hover{background:rgba(255,255,255,.22)}
+.ssadv-day{margin:10px 0 0;color:var(--gold);font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+.ssadv-hang{display:inline-block;margin-top:34px;transform-origin:50% -34px;animation:ssadv-drop .7s cubic-bezier(.2,.9,.3,1.3) both,ssadv-swing 2.6s ease-in-out .7s infinite alternate}
+@keyframes ssadv-drop{from{transform:translateY(-40px) scale(.6);opacity:0}}
+@keyframes ssadv-swing{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+.ssadv-shape{position:relative;width:216px;height:216px;display:flex;align-items:center;justify-content:center;color:#fff}
+.ssadv-st{display:flex;flex-direction:column;align-items:center;line-height:1;position:relative}
+.ssadv-em{font-size:34px;margin-bottom:4px}
+.ssadv-big{font-size:58px;font-weight:700;letter-spacing:-.01em;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+.ssadv-sub{max-width:160px;margin-top:6px;font-size:16px;line-height:1.15;letter-spacing:.05em;text-transform:uppercase}
+
+/* forma: glob */
+.ssadv-glob{border-radius:50%;background-color:var(--c);
+  background-image:radial-gradient(circle at 30% 24%,rgba(255,255,255,.75) 0 5%,rgba(255,255,255,0) 19%),radial-gradient(circle at 50% 42%,rgba(255,255,255,0) 52%,rgba(0,0,0,.32) 100%);
+  box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.ssadv-glob::before{content:"";position:absolute;top:-15px;left:50%;width:36px;height:20px;transform:translateX(-50%);border-radius:5px 5px 3px 3px;background:linear-gradient(90deg,#a9822a,#f6dd92 50%,#a9822a)}
+.ssadv-glob::after{content:"";position:absolute;top:-34px;left:50%;width:18px;height:20px;transform:translateX(-50%);border:3px solid var(--gold);border-radius:50%}
+
+/* forma: cadou */
+.ssadv-cadou{width:212px;height:184px;margin-top:22px;border-radius:12px;background-color:var(--c);
+  background-image:linear-gradient(90deg,transparent 43%,var(--gold) 43% 57%,transparent 57%),linear-gradient(rgba(255,255,255,.12),rgba(0,0,0,.18));
+  box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.ssadv-cadou::before{content:"";position:absolute;top:-22px;left:-10px;right:-10px;height:34px;border-radius:8px;background-color:var(--c);
+  background-image:linear-gradient(90deg,transparent 44%,var(--gold) 44% 56%,transparent 56%),linear-gradient(rgba(255,255,255,.2),rgba(0,0,0,.15));box-shadow:0 4px 8px rgba(0,0,0,.25)}
+.ssadv-cadou::after{content:"🎀";position:absolute;top:-62px;left:50%;transform:translateX(-50%);font-size:52px;line-height:1}
+.ssadv-cadou .ssadv-st{margin-top:12px;padding:12px 16px;border-radius:12px;background:var(--cream);color:var(--g);transform:rotate(-3deg);box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.ssadv-cadou .ssadv-big{font-size:46px;text-shadow:none;color:var(--pink)}
+.ssadv-cadou .ssadv-sub{font-size:14px}
+.ssadv-cadou .ssadv-em{font-size:26px}
+
+.ssadv-txt{max-width:360px;margin:14px auto 0;font:15px/1.45 system-ui,sans-serif;color:rgba(255,255,255,.9)}
+.ssadv-code{display:flex;align-items:center;gap:8px;max-width:300px;margin:14px auto 0;padding:6px 6px 6px 16px;border:2px dashed var(--pink);border-radius:12px;background:var(--cream);color:var(--g)}
+.ssadv-code code{flex:1;text-align:left;font:700 21px/1 ui-monospace,Consolas,Menlo,monospace;letter-spacing:.08em;background:none;color:inherit;padding:0}
+.ssadv-copy{border:0;border-radius:8px;padding:10px 14px;background:var(--g);color:#fff;font:600 14px/1 system-ui,sans-serif;cursor:pointer}
+.ssadv-copy.is-ok{background:#1f8a5b}
+.ssadv-cta{display:inline-block;margin-top:14px;padding:13px 26px;border-radius:999px;background:var(--pink);color:#fff!important;text-decoration:none!important;font-size:17px;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 6px 16px rgba(195,28,114,.45)}
+.ssadv-cta:hover{background:#a3155f}
+.ssadv-exp{margin:12px 0 0;font:13px/1.4 system-ui,sans-serif;color:rgba(255,255,255,.75)}
+.ssadv-exp b{font-variant-numeric:tabular-nums;color:#fff}
+
+/* confetti */
+.ssadv-p{position:absolute;left:50%;top:42%;font-size:20px;pointer-events:none;animation:ssadv-burst 1.15s ease-out both}
+@keyframes ssadv-burst{from{transform:translate(-50%,-50%) scale(.3);opacity:1}to{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1);opacity:0}}
+
+@media (max-width:520px){
+  .ssadv-box{padding:28px 12px 14px;border-radius:18px}
+  .ssadv-grid{gap:6px}
+  .ssadv-leaf b{font-size:18px}
+  .ssadv-door.is-today .ssadv-leaf b{font-size:21px}
+  .ssadv-in{font-size:21px}
+  .ssadv-tag{top:3px;font-size:9px;padding:0 4px}
+  .ssadv-leaf::after{right:4px;height:9px;margin-top:-4px}
+  .ssadv-h{margin:6px 36px 12px}
+  .ssadv-h h2{font-size:23px}
+  .ssadv-shape{width:190px;height:190px}
+  .ssadv-cadou{width:190px;height:166px}
+  .ssadv-big{font-size:50px}
+}
+@media (max-width:340px){.ssadv-grid{grid-template-columns:repeat(4,1fr)}}
+@media (prefers-reduced-motion:reduce){
+  .ssadv-dlg *,.ssadv-dlg *::before,.ssadv-box{animation:none!important;transition:none!important}
+}

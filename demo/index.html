@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo calendar Advent — Sersimo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:system-ui,sans-serif;background:#f6f4f1;color:#222}
+  .top{background:#c31c72;color:#fff;text-align:center;font:14px/1 system-ui;padding:9px}
+  header{display:flex;align-items:center;gap:24px;padding:18px 24px;background:#fff;border-bottom:1px solid #eee}
+  .logo{font:700 26px Oswald,sans-serif;letter-spacing:.06em;color:#c31c72}
+  nav{display:flex;gap:18px;font:15px Oswald,sans-serif;text-transform:uppercase;color:#444}
+  .hero{height:320px;margin:20px 24px;border-radius:14px;background:linear-gradient(120deg,#123c2c,#2a6b4f);color:#fff;display:flex;align-items:center;padding:0 40px;font:600 40px/1.1 Oswald,sans-serif}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;margin:0 24px 120px}
+  .card{background:#fff;border-radius:12px;padding:12px}
+  .card div{aspect-ratio:1;border-radius:8px;background:#e9e5df}
+  .card p{margin:10px 0 0;font-size:14px}
+  .test{position:fixed;top:44px;right:10px;z-index:99999;background:#111;color:#fff;border-radius:10px;padding:10px 12px;font:13px system-ui;max-width:300px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  .test select,.test button{font:13px system-ui;margin-top:6px}
+  .test a{color:#ffd98a}
+  @media(max-width:700px){nav{display:none}.hero{font-size:28px;height:200px}.test{top:auto;bottom:80px;right:8px}}
+</style>
+</head>
+<body>
+<div class="top">Livrare gratuită la comenzi peste 300 lei · pagină de test</div>
+<header><div class="logo">SERSIMO</div><nav><span>Brazi</span><span>Decorațiuni</span><span>Casă</span><span>Grădină</span></nav></header>
+<div class="hero">Christmas Deluxe<br>by Sersimo</div>
+<div class="grid">
+  <div class="card"><div></div><p>Brad Canada 210 cm</p></div>
+  <div class="card"><div></div><p>Brad Alaska 230 cm</p></div>
+  <div class="card"><div></div><p>Brad Global 230 cm</p></div>
+  <div class="card"><div></div><p>Brad Crystal 180 cm</p></div>
+  <div class="card"><div></div><p>Brad Frasin 220 cm</p></div>
+  <div class="card"><div></div><p>Globuri set 24</p></div>
+</div>
+
+<div class="test">
+  <b>Test calendar</b><br>
+  Simulează ziua:
+  <select id="zi"></select><br>
+  <button id="reset">Resetează ușile deschise</button>
+  <div id="kb" style="margin-top:6px;opacity:.8"></div>
+</div>
+
+<script>
+  // Doar pentru demo: ?zi=N simulează data, ?auto=0 oprește deschiderea automată.
+  var q = new URLSearchParams(location.search), zi = q.has('zi') ? +q.get('zi') : 3;
+  // ?api=1 imită răspunsul pluginului ({azi, zile}) — ziua vine de la server, nu din pagină.
+  var api = q.has('api');
+  window.SSADV_CFG = { base: '../sersimo-advent-calendar/assets/', data: api ? 'api-mock.json' : 'advent-days.json', year: 2026,
+                       debugDay: api ? null : zi, teaser: true,
+                       auto: q.get('auto') === '0' ? 0 : 2500, v: Date.now() };
+  var s = document.getElementById('zi');
+  for (var i = 0; i <= 25; i++) {
+    var o = document.createElement('option');
+    o.value = i; o.textContent = i === 0 ? 'înainte de 1 dec' : i === 25 ? 'după 24 dec' : i + ' decembrie';
+    if (i === zi) o.selected = true;
+    s.appendChild(o);
+  }
+  s.onchange = function () { q.set('zi', s.value); location.search = q; };
+  document.getElementById('reset').onclick = function () {
+    localStorage.removeItem('ssadv_open'); localStorage.removeItem('ssadv_auto'); location.reload();
+  };
+</script>
+<!-- Asta e tot ce ar intra în pagina reală: un script mic. -->
+<script src="../sersimo-advent-calendar/assets/advent-loader.js"></script>
+</body>
+</html>
