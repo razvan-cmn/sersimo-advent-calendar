@@ -1,4 +1,4 @@
-# Sersimo – Calendar de Advent (v1.0.0)
+# Sersimo – Calendar de Advent (v1.0.1)
 
 Popup cu 24 de uși (1–24 decembrie). Ușa zilei e aprinsă; la click se deschide și în același popup apare cuponul (glob sau cadou, cu emoji și text), cu cod, buton „Copiază” și link.
 

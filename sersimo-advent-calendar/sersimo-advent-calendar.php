@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Sersimo – Calendar de Advent
  * Description:       Calendar de Advent în popup: 24 de uși, ușa zilei aprinsă, cupon în același popup la click. Pe pagină stă doar un loader de ~2 KB; restul se încarcă abia la deschidere.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Pruntech
  * Requires at least: 6.0
  * Requires PHP:      7.4
@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 
 final class SSADV_Plugin {
 
-	const VER  = '1.0.0';
+	const VER  = '1.0.1';
 	const OPT  = 'ssadv_settings';
 	const DAYS = 'ssadv_days';
 	const REV  = 'ssadv_rev';

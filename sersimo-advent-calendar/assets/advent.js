@@ -39,7 +39,7 @@
 
   function build() {
     dlg = el('dialog', 'ssadv-dlg');
-    dlg.setAttribute('aria-label', 'Calendarul de Advent Sersimo');
+    dlg.setAttribute('aria-label', 'Advent Calendar Sersimo');
     box = el('div', 'ssadv-box');
     var lights = el('div', 'ssadv-lights');
     var cols = ['#ff4d6d', '#ffd166', '#06d6a0', '#4cc9f0', '#f72585'];
@@ -76,14 +76,15 @@
       return 'Prima ușă se deschide pe <b>1 decembrie</b>' + (p.month === 11 ? ' — mai sunt ' + left + (left === 1 ? ' zi' : ' zile') : '') + '.';
     }
     if (T > N) return 'Calendarul s-a încheiat. Crăciun fericit! 🎄';
-    return opened.indexOf(T) < 0 ? 'Ușa <b>' + T + '</b> e aprinsă — deschide-o!' : 'Ne vedem mâine la ușa ' + (T + 1 > N ? 'de Crăciun' : T + 1) + '.';
+    if (opened.indexOf(T) < 0) return 'Deschide ușa de astăzi!';
+    return T < N ? 'Ne vedem mâine la ușa ' + (T + 1) + '.' : 'Crăciun fericit! 🎄';
   }
 
   function showGrid() {
     stopTimer();
     view.className = 'ssadv-view';
     view.innerHTML =
-      '<div class="ssadv-h"><small>Christmas Deluxe by Sersimo</small><h2>Calendarul de Advent</h2></div>' +
+      '<div class="ssadv-h"><small>Christmas Deluxe by Sersimo</small><h2>Advent Calendar</h2></div>' +
       '<div class="ssadv-grid" role="list"></div><p class="ssadv-msg" aria-live="polite"></p>';
     grid = view.querySelector('.ssadv-grid');
     msg = view.querySelector('.ssadv-msg');

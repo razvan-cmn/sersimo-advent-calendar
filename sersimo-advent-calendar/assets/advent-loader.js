@@ -72,8 +72,8 @@
   var b = d.createElement('button');
   b.type = 'button';
   b.className = 'ssadv-fab' + (C.side === 'right' ? ' is-right' : '');
-  b.setAttribute('aria-label', 'Deschide calendarul de Advent');
-  b.innerHTML = '<i aria-hidden="true">🎄</i><span>Calendar Advent</span>';
+  b.setAttribute('aria-label', 'Deschide Advent Calendar');
+  b.innerHTML = '<i aria-hidden="true">🎄</i><span>Advent Calendar</span>';
   if (day >= 1 && day <= N && opened.indexOf(day) < 0) b.setAttribute('data-new', '');
   b.onclick = function () { open('buton'); };
   b.onpointerenter = function () { load(); }; // preîncărcare la hover
