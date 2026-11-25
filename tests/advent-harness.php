@@ -61,9 +61,32 @@ function wp_nonce_field( $a ) { echo '<input type="hidden" name="_wpnonce" value
 function check_admin_referer( $a ) { return true; }
 function wp_safe_redirect( $u ) { throw new Redirect( $u ); }
 function wp_die( $m ) { throw new Exception( 'die: ' . $m ); }
-function add_submenu_page( ...$a ) { $GLOBALS['menu'] = $a; }
+function add_submenu_page( ...$a ) { $GLOBALS['menu'] = $a; return 'woocommerce_page_ssadv'; }
 function add_options_page( ...$a ) { $GLOBALS['menu'] = $a; }
 function wc_get_coupon_id_by_code( $c ) { return 'ADVENT03' === $c ? 77 : 0; }
+function absint( $v ) { return abs( (int) $v ); }
+function wp_strip_all_tags( $s ) { return trim( strip_tags( (string) $s ) ); }
+function wp_get_attachment_image_url( $id, $size ) { return 'https://ex.ro/img/' . $id . '-300x300.jpg'; }
+function wc_price( $v ) { return '<span class="woocommerce-Price-amount amount"><bdi>' . number_format( $v, 2, '.', ',' ) . '&nbsp;<span class="woocommerce-Price-currencySymbol">lei</span></bdi></span>'; }
+function wp_enqueue_script( $h ) { $GLOBALS['enq'][] = $h; }
+function wp_enqueue_style( $h ) { $GLOBALS['enq'][] = $h; }
+class FakeProduct {
+	public $d;
+	function __construct( $d ) { $this->d = $d; }
+	function get_status() { return $this->d['status']; }
+	function get_name() { return $this->d['name']; }
+	function get_formatted_name() { return $this->d['name'] . ' (#' . $this->d['id'] . ')'; }
+	function get_permalink() { return 'https://ex.ro/product/' . $this->d['id'] . '/'; }
+	function get_image_id() { return $this->d['img']; }
+	function get_price() { return $this->d['price']; }
+	function get_regular_price() { return $this->d['reg']; }
+}
+$GLOBALS['products'] = array(
+	79777  => new FakeProduct( array( 'id' => 79777, 'status' => 'publish', 'name' => 'Brad artificial Christmas Deluxe by Sersimo, Global nins, mix 2D+3D, 210cm', 'img' => 55, 'price' => '700', 'reg' => '700' ) ),
+	217173 => new FakeProduct( array( 'id' => 217173, 'status' => 'publish', 'name' => 'Brad artificial Christmas Deluxe by Sersimo, Alaska, verde, mix 2D+3D, 210 cm', 'img' => 0, 'price' => '899', 'reg' => '1027' ) ),
+	5      => new FakeProduct( array( 'id' => 5, 'status' => 'draft', 'name' => 'Ciornă', 'img' => 0, 'price' => '10', 'reg' => '10' ) ),
+);
+function wc_get_product( $id ) { return $GLOBALS['products'][ $id ] ?? false; }
 
 $fail = 0; $n = 0;
 function ok( $cond, $name ) { global $fail, $n; $n++; if ( ! $cond ) { $fail++; echo "FAIL: $name\n"; } else { echo "ok   $name\n"; } }
@@ -91,7 +114,7 @@ ok( 'Europe/Bucharest' === $P::tz()->getName(), 'fus orar' );
 $day = $P::sanitize_day( array( 'emoji' => '🎄', 'forma' => 'x', 'culoare' => 'red', 'mare' => '<b>-20%</b> foarte lung text', 'mic' => 'bradul Canada',
 	'text' => "<script>alert(1)</script>Doar azi", 'cod' => ' advent 03 ', 'link' => 'javascript:alert(1)', 'buton' => 'Vezi' ) );
 ok( 'glob' === $day['forma'], 'formă invalidă → glob' );
-ok( '#c31c72' === $day['culoare'], 'culoare invalidă → implicit' );
+ok( '#c8102e' === $day['culoare'], 'culoare invalidă → implicit (roșu)' );
 ok( false === strpos( $day['text'], '<script' ), 'text fără script' );
 ok( 'ADVENT03' === $day['cod'], 'cod curățat și cu majuscule' );
 ok( '' === $day['link'], 'link javascript: respins' );
@@ -178,6 +201,39 @@ ok( false !== strpos( $o, 'cupon găsit' ) && false !== strpos( $o, 'nu există 
 ok( false !== strpos( $o, 'advent_zi=' ), 'admin: linkuri de previzualizare' );
 $P::menu();
 ok( 'woocommerce' === $GLOBALS['menu'][0], 'meniu sub WooCommerce' );
+
+// 7b. Produsul redus
+$pd = $P::product_data( 79777 );
+ok( 'Brad Global nins, mix 2D+3D, 210cm' === $pd['nume'], 'produs: nume scurtat' );
+ok( '700.00 lei' === $pd['pret'] && ! isset( $pd['pret_vechi'] ), 'produs: preț fără reducere' );
+ok( false !== strpos( $pd['img'], '55-300x300' ) && false !== strpos( $pd['link'], '/product/79777/' ), 'produs: poză și link' );
+$pd = $P::product_data( 217173 );
+ok( '899.00 lei' === $pd['pret'] && '1,027.00 lei' === $pd['pret_vechi'] && ! isset( $pd['img'] ), 'produs la reducere: preț vechi, fără poză' );
+ok( null === $P::product_data( 5 ), 'produs nepublicat ignorat' );
+ok( null === $P::product_data( 999 ), 'produs inexistent ignorat' );
+ok( 79777 === $P::sanitize_day( array( 'produs' => '79777abc' ) )['produs'], 'produs: ID curățat' );
+ok( 'Brad Canada' === $P::short_name( 'Brad Canada' ), 'nume fără prefix rămâne la fel' );
+
+$dd = get_option( 'ssadv_days' );
+$dd[5]['produs'] = 79777; $dd[5]['pret_cupon'] = '560.00 lei'; $dd[5]['mic'] = ''; $dd[4]['produs'] = 217173;
+update_option( 'ssadv_days', $dd );
+update_option( 'ssadv_settings', array( 'activ' => 1, 'an' => 2026 ) );
+$GLOBALS['can'] = true;
+$r = $P::rest_days( new Req( array( 'zi' => 5 ) ) );
+$z = (array) $r->data['zile'];
+ok( isset( $z['5']['produs']['nume'] ) && '560.00 lei' === $z['5']['pret_cupon'], 'REST: ziua de azi cu produs și preț cu cod' );
+ok( array( 'emoji' => '⭐' ) === $z['4'], 'REST: ieri doar emoji (fără produs)' );
+ok( ! is_int( $z['5']['produs'] ), 'REST: nu trimite ID-ul brut' );
+
+ob_start(); $P::page(); $o = ob_get_clean();
+ok( false !== strpos( $o, 'wc-product-search' ) && false !== strpos( $o, 'Global nins, mix 2D+3D, 210cm (#79777)</option>' ), 'admin: căutare produs cu produsul ales' );
+ok( false !== strpos( $o, 'Brad Global nins' ), 'admin: rezumatul zilei arată produsul' );
+$GLOBALS['enq'] = array();
+$P::menu();
+$P::admin_assets( 'altceva' );
+ok( empty( $GLOBALS['enq'] ), 'admin: scripturi doar pe pagina noastră' );
+$P::admin_assets( 'woocommerce_page_ssadv' );
+ok( in_array( 'wc-enhanced-select', $GLOBALS['enq'], true ), 'admin: căutarea de produse încărcată pe pagina noastră' );
 
 // 8. Salvare
 $_POST = array( 's' => array( 'activ' => '1', 'an' => '2026', 'auto' => '5' ), 'd' => array( 2 => array( 'mare' => '-10%', 'cod' => 'abc', 'text' => 'Sersimo\\\'s' ) ) );

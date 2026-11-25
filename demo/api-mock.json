@@ -16,13 +16,18 @@
   "5": {
    "emoji": "🦌",
    "forma": "glob",
-   "culoare": "#1d4f91",
+   "culoare": "#b3122e",
    "mare": "-25%",
-   "mic": "bradul Frasin",
-   "text": "Doar azi, Bradul Frasin cu 25% reducere. Exemplu — textul real îl puneți voi.",
+   "text": "Doar azi, 25% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
    "cod": "ADVENT05",
-   "link": "https://sersimo.ro/?s=frasin&post_type=product",
-   "buton": "Vezi bradul"
+   "buton": "Vezi bradul",
+   "produs": {
+    "nume": "Brad Frasin de Munte, 2D, 220cm",
+    "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-41-300x300.jpg",
+    "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-frasin-de-munte-2d-220cm/",
+    "pret": "449.00 lei"
+   },
+   "pret_cupon": "337.00 lei"
   }
  }
 }

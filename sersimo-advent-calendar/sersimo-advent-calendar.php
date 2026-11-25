@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Sersimo – Calendar de Advent
  * Description:       Calendar de Advent în popup: 24 de uși, ușa zilei aprinsă, cupon în același popup la click. Pe pagină stă doar un loader de ~2 KB; restul se încarcă abia la deschidere.
- * Version:           1.0.1
+ * Version:           1.1.0
  * Author:            Pruntech
  * Requires at least: 6.0
  * Requires PHP:      7.4
@@ -13,12 +13,15 @@ defined( 'ABSPATH' ) || exit;
 
 final class SSADV_Plugin {
 
-	const VER  = '1.0.1';
+	const VER  = '1.1.0';
 	const OPT  = 'ssadv_settings';
 	const DAYS = 'ssadv_days';
 	const REV  = 'ssadv_rev';
 	const N    = 24;
 	const NS   = 'sersimo-advent/v1';
+
+	/** Sufixul paginii de admin (pentru încărcarea căutării de produse WooCommerce). */
+	private static $hook = '';
 
 	/** Câmpurile unei zile: cheie => [etichetă, tip, lungime maximă]. */
 	public static function fields() {
@@ -26,13 +29,15 @@ final class SSADV_Plugin {
 			'emoji'    => array( 'Emoji', 'text', 16 ),
 			'forma'    => array( 'Formă cupon', 'select', 0 ),
 			'culoare'  => array( 'Culoare', 'color', 0 ),
-			'mare'     => array( 'Text mare (ex. -20%)', 'text', 14 ),
-			'mic'      => array( 'Text mic (ex. bradul Canada)', 'text', 40 ),
-			'eticheta' => array( 'Eticheta de sus (opțional)', 'text', 40 ),
-			'text'     => array( 'Descriere', 'textarea', 220 ),
-			'cod'      => array( 'Cod cupon', 'text', 40 ),
-			'link'     => array( 'Link buton', 'url', 0 ),
-			'buton'    => array( 'Text buton', 'text', 30 ),
+			'mare'       => array( 'Text mare (ex. -20%)', 'text', 14 ),
+			'produs'     => array( 'Produs redus (poza, numele și prețul se iau automat)', 'product', 0 ),
+			'mic'        => array( 'Nume afișat (opțional; altfel numele produsului)', 'text', 80 ),
+			'pret_cupon' => array( 'Preț cu codul (opțional, ex. 559.00 lei)', 'text', 30 ),
+			'eticheta'   => array( 'Eticheta de sus (opțional)', 'text', 40 ),
+			'text'       => array( 'Descriere', 'textarea', 220 ),
+			'cod'        => array( 'Cod cupon', 'text', 40 ),
+			'link'       => array( 'Link buton (opțional; altfel pagina produsului)', 'url', 0 ),
+			'buton'      => array( 'Text buton', 'text', 30 ),
 		);
 	}
 
@@ -54,6 +59,7 @@ final class SSADV_Plugin {
 		add_action( 'rest_api_init', array( __CLASS__, 'routes' ) );
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ), 60 );
 		add_action( 'admin_post_ssadv_save', array( __CLASS__, 'save' ) );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_assets' ), 20 );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( __CLASS__, 'action_links' ) );
 	}
 
@@ -194,9 +200,13 @@ final class SSADV_Plugin {
 				}
 				$pub = array();
 				foreach ( array_keys( self::fields() ) as $k ) {
-					if ( isset( $d[ $k ] ) && '' !== $d[ $k ] ) {
+					if ( 'produs' !== $k && isset( $d[ $k ] ) && '' !== $d[ $k ] ) {
 						$pub[ $k ] = $d[ $k ];
 					}
+				}
+				$prod = self::product_data( isset( $d['produs'] ) ? (int) $d['produs'] : 0 );
+				if ( $prod ) {
+					$pub['produs'] = $prod;
 				}
 				$out[ (string) $i ] = $pub;
 			}
@@ -214,7 +224,55 @@ final class SSADV_Plugin {
 		return $res;
 	}
 
+	/** Datele publice ale produsului redus: nume scurt, link, poză, preț (doar produse publicate). */
+	public static function product_data( $id ) {
+		if ( ! $id || ! function_exists( 'wc_get_product' ) ) {
+			return null;
+		}
+		$p = wc_get_product( $id );
+		if ( ! $p || 'publish' !== $p->get_status() ) {
+			return null;
+		}
+		$out = array(
+			'nume' => self::short_name( $p->get_name() ),
+			'link' => $p->get_permalink(),
+		);
+		$img = $p->get_image_id() ? wp_get_attachment_image_url( $p->get_image_id(), 'woocommerce_thumbnail' ) : '';
+		if ( $img ) {
+			$out['img'] = $img;
+		}
+		$price = (float) $p->get_price();
+		$reg   = (float) $p->get_regular_price();
+		if ( $price > 0 ) {
+			$out['pret'] = self::money( $price );
+			if ( $reg > $price ) {
+				$out['pret_vechi'] = self::money( $reg );
+			}
+		}
+		return $out;
+	}
+
+	/** „Brad artificial Christmas Deluxe by Sersimo, Global nins, mix 2D+3D, 210cm” → „Brad Global nins, mix 2D+3D, 210cm”. */
+	public static function short_name( $name ) {
+		$name = html_entity_decode( wp_strip_all_tags( (string) $name ), ENT_QUOTES, 'UTF-8' );
+		return trim( preg_replace( '/^Brad artificial\s+Christmas Deluxe by Sersimo,\s*/iu', 'Brad ', $name ) );
+	}
+
+	/** Preț ca text simplu, în formatul magazinului (ex. „700.00 lei”). */
+	public static function money( $v ) {
+		$t = function_exists( 'wc_price' ) ? wp_strip_all_tags( wc_price( $v ) ) : number_format( $v, 2 ) . ' lei';
+		return trim( str_replace( "\xc2\xa0", ' ', html_entity_decode( $t, ENT_QUOTES, 'UTF-8' ) ) );
+	}
+
 	/* ----------------------------------------------------------------- admin */
+
+	public static function admin_assets( $hook ) {
+		if ( $hook !== self::$hook || ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
+		wp_enqueue_script( 'wc-enhanced-select' ); // căutarea de produse din WooCommerce
+		wp_enqueue_style( 'woocommerce_admin_styles' );
+	}
 
 	public static function action_links( $links ) {
 		array_unshift( $links, '<a href="' . esc_url( self::admin_url() ) . '">Setări</a>' );
@@ -227,9 +285,9 @@ final class SSADV_Plugin {
 
 	public static function menu() {
 		if ( class_exists( 'WooCommerce' ) ) {
-			add_submenu_page( 'woocommerce', 'Calendar de Advent', 'Calendar Advent', self::cap(), 'ssadv', array( __CLASS__, 'page' ) );
+			self::$hook = (string) add_submenu_page( 'woocommerce', 'Calendar de Advent', 'Calendar Advent', self::cap(), 'ssadv', array( __CLASS__, 'page' ) );
 		} else {
-			add_options_page( 'Calendar de Advent', 'Calendar Advent', self::cap(), 'ssadv', array( __CLASS__, 'page' ) );
+			self::$hook = (string) add_options_page( 'Calendar de Advent', 'Calendar Advent', self::cap(), 'ssadv', array( __CLASS__, 'page' ) );
 		}
 	}
 
@@ -256,7 +314,10 @@ final class SSADV_Plugin {
 					break;
 				case 'color':
 					$v = sanitize_hex_color( $v );
-					$v = $v ? $v : '#c31c72';
+					$v = $v ? $v : '#c8102e';
+					break;
+				case 'product':
+					$v = absint( $v );
 					break;
 				case 'url':
 					$v = esc_url_raw( trim( $v ) );
@@ -267,7 +328,7 @@ final class SSADV_Plugin {
 				default:
 					$v = sanitize_text_field( $v );
 			}
-			if ( $f[2] > 0 && function_exists( 'mb_substr' ) ) {
+			if ( $f[2] > 0 && is_string( $v ) && function_exists( 'mb_substr' ) ) {
 				$v = mb_substr( $v, 0, $f[2] );
 			}
 			$out[ $k ] = $v;
@@ -348,7 +409,12 @@ final class SSADV_Plugin {
 						return isset( $d[ $k ] ) ? $d[ $k ] : '';
 					};
 					$done  = '' !== $v( 'mare' );
-					$label = $done ? trim( $v( 'emoji' ) . ' ' . $v( 'mare' ) . ' ' . $v( 'mic' ) ) : 'necompletată';
+					$pname = '';
+					if ( $v( 'produs' ) && function_exists( 'wc_get_product' ) ) {
+						$po    = wc_get_product( (int) $v( 'produs' ) );
+						$pname = $po ? self::short_name( $po->get_name() ) : '⚠ produs șters';
+					}
+					$label = $done ? trim( $v( 'emoji' ) . ' ' . $v( 'mare' ) . ' ' . ( $v( 'mic' ) ? $v( 'mic' ) : $pname ) ) : 'necompletată';
 					?>
 					<details class="ssadv-day<?php echo $i === $azi ? ' is-today' : ''; ?>" <?php echo $i === $azi ? 'open' : ''; ?>>
 						<summary>
@@ -369,7 +435,19 @@ final class SSADV_Plugin {
 										echo '<select name="' . esc_attr( $name ) . '"><option value="glob"' . selected( $val, 'glob', false ) . '>Glob</option><option value="cadou"' . selected( $val, 'cadou', false ) . '>Cadou</option></select>';
 										break;
 									case 'color':
-										echo '<input type="color" name="' . esc_attr( $name ) . '" value="' . esc_attr( $val ? $val : '#c31c72' ) . '">';
+										echo '<input type="color" name="' . esc_attr( $name ) . '" value="' . esc_attr( $val ? $val : '#c8102e' ) . '">';
+										break;
+									case 'product':
+										if ( class_exists( 'WooCommerce' ) ) {
+											$opt = '';
+											$po  = $val ? wc_get_product( (int) $val ) : null;
+											if ( $po ) {
+												$opt = '<option value="' . (int) $val . '" selected>' . esc_html( wp_strip_all_tags( $po->get_formatted_name() ) ) . '</option>';
+											}
+											echo '<select class="wc-product-search" style="width:100%" name="' . esc_attr( $name ) . '" data-placeholder="Caută produsul…" data-action="woocommerce_json_search_products_and_variations" data-allow_clear="true">' . $opt . '</select>'; // phpcs:ignore WordPress.Security.EscapeOutput
+										} else {
+											echo '<input type="number" min="0" name="' . esc_attr( $name ) . '" value="' . esc_attr( $val ) . '" placeholder="ID produs">';
+										}
 										break;
 									case 'textarea':
 										echo '<textarea name="' . esc_attr( $name ) . '" rows="2" maxlength="' . (int) $meta[2] . '">' . esc_textarea( $val ) . '</textarea>';
@@ -403,7 +481,7 @@ final class SSADV_Plugin {
 			.ssadv-f{display:flex;flex-direction:column;gap:3px}
 			.ssadv-f>span{font-size:12px;color:#50575e}
 			.ssadv-f input[type=text],.ssadv-f input[type=url],.ssadv-f select,.ssadv-f textarea{width:100%}
-			.ssadv-f-text,.ssadv-f-link{grid-column:span 2}
+			.ssadv-f-text,.ssadv-f-link,.ssadv-f-produs,.ssadv-f-mic{grid-column:span 2}
 			.ssadv-f input[type=color]{width:60px;height:32px;padding:2px}
 			.ssadv-ok{color:#1a7f37}.ssadv-warn{color:#b45309}.ssadv-muted{color:#8c8f94}
 			.ssadv-badge{background:#c31c72;color:#fff;border-radius:10px;padding:1px 8px;font-size:11px;text-transform:uppercase}

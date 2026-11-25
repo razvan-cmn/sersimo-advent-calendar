@@ -64,7 +64,10 @@
     '.ssadv-fab[data-new]::after{content:"";position:absolute;top:5px;left:33px;width:10px;height:10px;' +
     'border-radius:50%;background:#ffd98a;box-shadow:0 0 0 2px #c31c72}' +
     '@keyframes ssadv-wig{0%,88%,100%{transform:none}92%{transform:rotate(-12deg)}96%{transform:rotate(12deg)}}' +
-    '@media(max-width:600px){.ssadv-fab span{display:none}.ssadv-fab{padding:12px}}' +
+    '.ssadv-fab .s{display:none}.ssadv-fab .l{max-width:270px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.2}' +
+    '.ssadv-fab.ssadv-ping{animation:ssadv-ping 1s ease-out 2}' +
+    '@keyframes ssadv-ping{0%{box-shadow:0 0 0 0 rgba(195,28,114,.7),0 6px 18px rgba(0,0,0,.25)}100%{box-shadow:0 0 0 18px rgba(195,28,114,0),0 6px 18px rgba(0,0,0,.25)}}' +
+    '@media(max-width:600px){.ssadv-fab .l{display:none}.ssadv-fab{padding:12px}.ssadv-fab[data-cupon]{padding:10px 16px 10px 12px}.ssadv-fab[data-cupon] .s{display:inline}}' +
     '@media(prefers-reduced-motion:reduce){.ssadv-fab i{animation:none!important}}';
   d.head.appendChild(css);
 
@@ -73,9 +76,25 @@
   b.type = 'button';
   b.className = 'ssadv-fab' + (C.side === 'right' ? ' is-right' : '');
   b.setAttribute('aria-label', 'Deschide Advent Calendar');
-  b.innerHTML = '<i aria-hidden="true">🎄</i><span>Advent Calendar</span>';
+  b.innerHTML = '<i aria-hidden="true">🎄</i><span class="l">Advent Calendar</span>';
   if (day >= 1 && day <= N && opened.indexOf(day) < 0) b.setAttribute('data-new', '');
-  b.onclick = function () { open('buton'); };
+  b.onclick = function () { open(b.hasAttribute('data-cupon') ? 'cupon' : 'buton'); };
+
+  // După ce s-a deschis ușa de azi, butonul arată reducerea și duce direct la cupon (până la miezul nopții).
+  C.setFab = function (v) {
+    if (!v || v.k !== Y + '-12-' + day || !v.mare) return;
+    var l = d.createElement('span'), s = d.createElement('span'), i = d.createElement('i');
+    l.className = 'l'; l.textContent = v.mare + (v.nume ? ' · ' + v.nume : '');
+    s.className = 's'; s.textContent = v.mare;
+    i.setAttribute('aria-hidden', 'true'); i.textContent = '🎁';
+    b.textContent = '';
+    b.appendChild(i); b.appendChild(l); b.appendChild(s);
+    b.title = 'Cuponul de azi: ' + l.textContent;
+    b.setAttribute('aria-label', 'Vezi cuponul de azi: ' + l.textContent);
+    b.setAttribute('data-cupon', '');
+    b.removeAttribute('data-new');
+  };
+  C.setFab(C.ls('ssadv_cupon'));
   b.onpointerenter = function () { load(); }; // preîncărcare la hover
   C.fab = b;
 

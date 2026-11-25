@@ -61,7 +61,7 @@
   }
   s.onchange = function () { q.set('zi', s.value); location.search = q; };
   document.getElementById('reset').onclick = function () {
-    localStorage.removeItem('ssadv_open'); localStorage.removeItem('ssadv_auto'); location.reload();
+    localStorage.removeItem('ssadv_open'); localStorage.removeItem('ssadv_auto'); localStorage.removeItem('ssadv_cupon'); location.reload();
   };
 </script>
 <!-- Asta e tot ce ar intra în pagina reală: un script mic. -->

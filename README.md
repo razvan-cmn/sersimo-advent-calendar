@@ -1,6 +1,6 @@
 # Sersimo – Calendar de Advent
 
-Plugin WordPress/WooCommerce pentru sersimo.ro: popup cu 24 de uși (1–24 decembrie). Ușa zilei e aprinsă, iar la click cuponul apare în același popup.
+Plugin WordPress/WooCommerce pentru sersimo.ro: popup roz cu 24 de uși (1–24 decembrie). Ușa zilei strălucește, iar la click cuponul apare în același popup, cu produsul redus (poză, nume, preț). După deschidere, butonul flotant duce direct la cuponul zilei.
 
 - **Demo online:** https://razvan-cmn.github.io/sersimo-advent-calendar/demo/ (din caseta din dreapta-sus alegi ziua simulată)
 - **Plugin:** folderul [`sersimo-advent-calendar/`](sersimo-advent-calendar/). Zip-ul gata de încărcat în WordPress e în [Releases](https://github.com/razvan-cmn/sersimo-advent-calendar/releases).

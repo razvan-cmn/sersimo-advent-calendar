@@ -2,265 +2,386 @@
  "1": {
   "emoji": "🎄",
   "forma": "glob",
-  "culoare": "#c31c72",
+  "culoare": "#c8102e",
   "mare": "-10%",
-  "mic": "bradul Canada",
-  "text": "Doar azi, Bradul Canada cu 10% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT01",
-  "link": "https://sersimo.ro/?s=canada&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Global nins, mix 2D+3D, 210cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/11/1-118-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-global-nins-mix-2d3d-210cm/",
+   "pret": "700.00 lei"
+  },
+  "pret_cupon": "630.00 lei"
  },
  "2": {
   "emoji": "❄️",
   "forma": "glob",
-  "culoare": "#b3122e",
+  "culoare": "#1f7a4d",
   "mare": "-15%",
-  "mic": "bradul Alaska",
-  "text": "Doar azi, Bradul Alaska cu 15% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT02",
-  "link": "https://sersimo.ro/?s=alaska&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Canada Mix, 2D+3D, 180cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-49-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-canada-mix-2d3d-180cm/",
+   "pret": "542.00 lei"
+  },
+  "pret_cupon": "461.00 lei"
  },
  "3": {
   "emoji": "⭐",
   "forma": "cadou",
-  "culoare": "#1f7a4d",
+  "culoare": "#c9962b",
   "mare": "-20%",
-  "mic": "bradul Global",
-  "text": "Doar azi, Bradul Global cu 20% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT03",
-  "link": "https://sersimo.ro/?s=global&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Alaska, verde, mix 2D+3D, 210 cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2025/10/Alasca-2.1-13-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-sersimo-alaska-verde-mix-2d3d-210-cm/",
+   "pret": "899.00 lei",
+   "pret_vechi": "1,027.00 lei"
+  },
+  "pret_cupon": "719.00 lei"
  },
  "4": {
   "emoji": "🎁",
   "forma": "glob",
-  "culoare": "#c9962b",
+  "culoare": "#0f5132",
   "mare": "-12%",
-  "mic": "bradul Crystal",
-  "text": "Doar azi, Bradul Crystal cu 12% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 12% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT04",
-  "link": "https://sersimo.ro/?s=crystal&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Crystal nins cu merisoare, 2D, 180cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-64-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-crystal-nins-cu-merisoare-2d-180cm/",
+   "pret": "277.00 lei"
+  },
+  "pret_cupon": "244.00 lei"
  },
  "5": {
   "emoji": "🦌",
   "forma": "glob",
-  "culoare": "#1d4f91",
+  "culoare": "#b3122e",
   "mare": "-25%",
-  "mic": "bradul Frasin",
-  "text": "Doar azi, Bradul Frasin cu 25% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 25% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT05",
-  "link": "https://sersimo.ro/?s=frasin&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Frasin de Munte, 2D, 220cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-41-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-frasin-de-munte-2d-220cm/",
+   "pret": "449.00 lei"
+  },
+  "pret_cupon": "337.00 lei"
  },
  "6": {
   "emoji": "⛄",
   "forma": "cadou",
-  "culoare": "#c31c72",
+  "culoare": "#c8102e",
   "mare": "-10%",
-  "mic": "bradul Canada",
-  "text": "Doar azi, Bradul Canada cu 10% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT06",
-  "link": "https://sersimo.ro/?s=canada&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Victoria nins, 2D, 150cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2026/09/U-Victoria-Snow-150-1-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-victoria-nins-2d-150cm/",
+   "pret": "239.00 lei",
+   "pret_vechi": "280.01 lei"
+  },
+  "pret_cupon": "215.00 lei"
  },
  "7": {
   "emoji": "🔔",
   "forma": "glob",
-  "culoare": "#b3122e",
+  "culoare": "#1f7a4d",
   "mare": "-15%",
-  "mic": "bradul Alaska",
-  "text": "Doar azi, Bradul Alaska cu 15% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT07",
-  "link": "https://sersimo.ro/?s=alaska&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Viena nins, 3D, 150cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2026/09/U-Viena-Snow-150-0-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-viena-nins-3d-150cm/",
+   "pret": "558.00 lei"
+  },
+  "pret_cupon": "474.00 lei"
  },
  "8": {
   "emoji": "🕯️",
   "forma": "glob",
-  "culoare": "#1f7a4d",
+  "culoare": "#c9962b",
   "mare": "-20%",
-  "mic": "bradul Global",
-  "text": "Doar azi, Bradul Global cu 20% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT08",
-  "link": "https://sersimo.ro/?s=global&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Canada Mix, 2D+3D, 230cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/001-14-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-canada-mix-2d3d-1656-ramificatii-230cm/",
+   "pret": "876.00 lei"
+  },
+  "pret_cupon": "701.00 lei"
  },
  "9": {
   "emoji": "🎄",
   "forma": "cadou",
-  "culoare": "#c9962b",
+  "culoare": "#0f5132",
   "mare": "-12%",
-  "mic": "bradul Crystal",
-  "text": "Doar azi, Bradul Crystal cu 12% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 12% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT09",
-  "link": "https://sersimo.ro/?s=crystal&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Global nins, mix 2D+3D, 210cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/11/1-118-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-global-nins-mix-2d3d-210cm/",
+   "pret": "700.00 lei"
+  },
+  "pret_cupon": "616.00 lei"
  },
  "10": {
   "emoji": "❄️",
   "forma": "glob",
-  "culoare": "#1d4f91",
+  "culoare": "#b3122e",
   "mare": "-25%",
-  "mic": "bradul Frasin",
-  "text": "Doar azi, Bradul Frasin cu 25% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 25% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT10",
-  "link": "https://sersimo.ro/?s=frasin&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Canada Mix, 2D+3D, 180cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-49-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-canada-mix-2d3d-180cm/",
+   "pret": "542.00 lei"
+  },
+  "pret_cupon": "406.00 lei"
  },
  "11": {
   "emoji": "⭐",
   "forma": "glob",
-  "culoare": "#c31c72",
+  "culoare": "#c8102e",
   "mare": "-10%",
-  "mic": "bradul Canada",
-  "text": "Doar azi, Bradul Canada cu 10% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT11",
-  "link": "https://sersimo.ro/?s=canada&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Alaska, verde, mix 2D+3D, 210 cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2025/10/Alasca-2.1-13-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-sersimo-alaska-verde-mix-2d3d-210-cm/",
+   "pret": "899.00 lei",
+   "pret_vechi": "1,027.00 lei"
+  },
+  "pret_cupon": "809.00 lei"
  },
  "12": {
   "emoji": "🎁",
   "forma": "cadou",
-  "culoare": "#b3122e",
+  "culoare": "#1f7a4d",
   "mare": "-15%",
-  "mic": "bradul Alaska",
-  "text": "Doar azi, Bradul Alaska cu 15% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT12",
-  "link": "https://sersimo.ro/?s=alaska&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Crystal nins cu merisoare, 2D, 180cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-64-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-crystal-nins-cu-merisoare-2d-180cm/",
+   "pret": "277.00 lei"
+  },
+  "pret_cupon": "235.00 lei"
  },
  "13": {
   "emoji": "🦌",
   "forma": "glob",
-  "culoare": "#1f7a4d",
+  "culoare": "#c9962b",
   "mare": "-20%",
-  "mic": "bradul Global",
-  "text": "Doar azi, Bradul Global cu 20% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT13",
-  "link": "https://sersimo.ro/?s=global&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Frasin de Munte, 2D, 220cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-41-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-frasin-de-munte-2d-220cm/",
+   "pret": "449.00 lei"
+  },
+  "pret_cupon": "359.00 lei"
  },
  "14": {
   "emoji": "⛄",
   "forma": "glob",
-  "culoare": "#c9962b",
+  "culoare": "#0f5132",
   "mare": "-12%",
-  "mic": "bradul Crystal",
-  "text": "Doar azi, Bradul Crystal cu 12% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 12% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT14",
-  "link": "https://sersimo.ro/?s=crystal&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Victoria nins, 2D, 150cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2026/09/U-Victoria-Snow-150-1-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-victoria-nins-2d-150cm/",
+   "pret": "239.00 lei",
+   "pret_vechi": "280.01 lei"
+  },
+  "pret_cupon": "210.00 lei"
  },
  "15": {
   "emoji": "🔔",
   "forma": "cadou",
-  "culoare": "#1d4f91",
+  "culoare": "#b3122e",
   "mare": "-25%",
-  "mic": "bradul Frasin",
-  "text": "Doar azi, Bradul Frasin cu 25% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 25% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT15",
-  "link": "https://sersimo.ro/?s=frasin&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Viena nins, 3D, 150cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2026/09/U-Viena-Snow-150-0-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-viena-nins-3d-150cm/",
+   "pret": "558.00 lei"
+  },
+  "pret_cupon": "418.00 lei"
  },
  "16": {
   "emoji": "🕯️",
   "forma": "glob",
-  "culoare": "#c31c72",
+  "culoare": "#c8102e",
   "mare": "-10%",
-  "mic": "bradul Canada",
-  "text": "Doar azi, Bradul Canada cu 10% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT16",
-  "link": "https://sersimo.ro/?s=canada&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Canada Mix, 2D+3D, 230cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/001-14-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-canada-mix-2d3d-1656-ramificatii-230cm/",
+   "pret": "876.00 lei"
+  },
+  "pret_cupon": "788.00 lei"
  },
  "17": {
   "emoji": "🎄",
   "forma": "glob",
-  "culoare": "#b3122e",
+  "culoare": "#1f7a4d",
   "mare": "-15%",
-  "mic": "bradul Alaska",
-  "text": "Doar azi, Bradul Alaska cu 15% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT17",
-  "link": "https://sersimo.ro/?s=alaska&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Global nins, mix 2D+3D, 210cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/11/1-118-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-global-nins-mix-2d3d-210cm/",
+   "pret": "700.00 lei"
+  },
+  "pret_cupon": "595.00 lei"
  },
  "18": {
   "emoji": "❄️",
   "forma": "cadou",
-  "culoare": "#1f7a4d",
+  "culoare": "#c9962b",
   "mare": "-20%",
-  "mic": "bradul Global",
-  "text": "Doar azi, Bradul Global cu 20% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT18",
-  "link": "https://sersimo.ro/?s=global&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Canada Mix, 2D+3D, 180cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-49-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-canada-mix-2d3d-180cm/",
+   "pret": "542.00 lei"
+  },
+  "pret_cupon": "434.00 lei"
  },
  "19": {
   "emoji": "⭐",
   "forma": "glob",
-  "culoare": "#c9962b",
+  "culoare": "#0f5132",
   "mare": "-12%",
-  "mic": "bradul Crystal",
-  "text": "Doar azi, Bradul Crystal cu 12% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 12% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT19",
-  "link": "https://sersimo.ro/?s=crystal&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Alaska, verde, mix 2D+3D, 210 cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2025/10/Alasca-2.1-13-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-sersimo-alaska-verde-mix-2d3d-210-cm/",
+   "pret": "899.00 lei",
+   "pret_vechi": "1,027.00 lei"
+  },
+  "pret_cupon": "791.00 lei"
  },
  "20": {
   "emoji": "🎁",
   "forma": "glob",
-  "culoare": "#1d4f91",
+  "culoare": "#b3122e",
   "mare": "-25%",
-  "mic": "bradul Frasin",
-  "text": "Doar azi, Bradul Frasin cu 25% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 25% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT20",
-  "link": "https://sersimo.ro/?s=frasin&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Crystal nins cu merisoare, 2D, 180cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-64-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-crystal-nins-cu-merisoare-2d-180cm/",
+   "pret": "277.00 lei"
+  },
+  "pret_cupon": "208.00 lei"
  },
  "21": {
   "emoji": "🦌",
   "forma": "cadou",
-  "culoare": "#c31c72",
+  "culoare": "#c8102e",
   "mare": "-10%",
-  "mic": "bradul Canada",
-  "text": "Doar azi, Bradul Canada cu 10% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT21",
-  "link": "https://sersimo.ro/?s=canada&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Frasin de Munte, 2D, 220cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2023/10/01-41-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-frasin-de-munte-2d-220cm/",
+   "pret": "449.00 lei"
+  },
+  "pret_cupon": "404.00 lei"
  },
  "22": {
   "emoji": "⛄",
   "forma": "glob",
-  "culoare": "#b3122e",
+  "culoare": "#1f7a4d",
   "mare": "-15%",
-  "mic": "bradul Alaska",
-  "text": "Doar azi, Bradul Alaska cu 15% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT22",
-  "link": "https://sersimo.ro/?s=alaska&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Victoria nins, 2D, 150cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2026/09/U-Victoria-Snow-150-1-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-victoria-nins-2d-150cm/",
+   "pret": "239.00 lei",
+   "pret_vechi": "280.01 lei"
+  },
+  "pret_cupon": "203.00 lei"
  },
  "23": {
   "emoji": "🔔",
   "forma": "glob",
-  "culoare": "#1f7a4d",
+  "culoare": "#c9962b",
   "mare": "-20%",
-  "mic": "bradul Global",
-  "text": "Doar azi, Bradul Global cu 20% reducere. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
   "cod": "ADVENT23",
-  "link": "https://sersimo.ro/?s=global&post_type=product",
-  "buton": "Vezi bradul"
+  "buton": "Vezi bradul",
+  "produs": {
+   "nume": "Brad Viena nins, 3D, 150cm",
+   "img": "https://sersimo.ro/wp-content/uploads/2026/09/U-Viena-Snow-150-0-300x300.jpg",
+   "link": "https://sersimo.ro/product/brad-artificial-christmas-deluxe-by-sersimo-viena-nins-3d-150cm/",
+   "pret": "558.00 lei"
+  },
+  "pret_cupon": "446.00 lei"
  },
  "24": {
   "emoji": "🎅",
   "forma": "cadou",
-  "culoare": "#c9962b",
+  "culoare": "#0f5132",
   "mare": "-30%",
-  "mic": "toți brazii",
   "text": "Surpriza de Ajun: reducere la toată colecția Christmas Deluxe.",
   "cod": "ADVENT24",
+  "buton": "Vezi colecția",
   "link": "https://sersimo.ro/",
-  "buton": "Vezi colecția"
+  "mic": "Toată colecția Christmas Deluxe"
  }
 }

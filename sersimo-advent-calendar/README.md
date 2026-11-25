@@ -1,6 +1,8 @@
-# Sersimo – Calendar de Advent (v1.0.1)
+# Sersimo – Calendar de Advent (v1.1.0)
 
-Popup cu 24 de uși (1–24 decembrie). Ușa zilei e aprinsă; la click se deschide și în același popup apare cuponul (glob sau cadou, cu emoji și text), cu cod, buton „Copiază” și link.
+Popup roz (culoarea brandului) cu 24 de uși verzi (1–24 decembrie). Ușa zilei e roșie și strălucește. La click se deschide, iar în același popup apare cuponul: reducerea într-un glob sau cadou, produsul redus (poză, nume complet, preț), codul cu buton „Copiază” și link spre produs.
+
+După ce omul a deschis ușa zilei, butonul flotant se schimbă în „🎁 -20% · Brad Global nins…” și duce **direct la cupon** până la miezul nopții. Dacă închide popup-ul cu X, butonul pulsează scurt, ca să vadă unde a rămas oferta.
 
 ## Instalare
 
@@ -10,7 +12,17 @@ Popup cu 24 de uși (1–24 decembrie). Ușa zilei e aprinsă; la click se desch
 
 ## Cupoanele
 
-Pluginul **nu creează și nu modifică cupoane**. Le faceți voi în WooCommerce → Marketing → Cupoane (reducere, brazii la care se aplică, expirare). În pagina pluginului puneți doar ce se afișează: emoji, formă, culoare, textul mare (ex. `-20%`), textul mic (ex. `bradul Canada`), descriere, cod, link și text buton.
+Pluginul **nu creează și nu modifică cupoane**. Le faceți voi în WooCommerce → Marketing → Cupoane (reducere, brazii la care se aplică, expirare). În pagina pluginului puneți doar ce se afișează:
+
+| Câmp | Exemplu | Observații |
+|---|---|---|
+| Emoji, formă, culoare | 🎄, glob, roșu | Forma: glob sau cadou. Culoarea e a globului sau a cadoului; evitați roz, popup-ul e roz |
+| Text mare | `-20%` | Apare în glob |
+| Produs redus | caută „Global nins 210” | Poza, numele, prețul și linkul se iau automat din WooCommerce |
+| Nume afișat | `Brad Global nins 2D+3D, 210 cm` | Opțional. Gol = numele produsului fără „Brad artificial Christmas Deluxe by Sersimo,” |
+| Preț cu codul | `560.00 lei` | Opțional. Apare cu roșu, iar prețul actual apare tăiat. Gol = doar prețul actual (și cel vechi, dacă produsul e deja la reducere) |
+| Descriere, cod, text buton | | |
+| Link buton | | Opțional. Gol = pagina produsului |
 
 - Lângă fiecare cod apare dacă există sau nu un cupon cu acel cod în WooCommerce (doar verificare).
 - WooCommerce nu are „valabil de la”: pentru un cupon valabil o singură zi, puneți expirarea în ziua respectivă și **nu îl publicați înainte** (sau programați publicarea). Calendarul arată codul doar din ziua lui, dar cuponul în sine merge atâta timp cât e publicat.
@@ -19,7 +31,7 @@ Pluginul **nu creează și nu modifică cupoane**. Le faceți voi în WooCommerc
 
 Din pagina pluginului: „Previzualizează ziua N pe site”. Merge și cu calendarul oprit: adăugați `?advent_zi=N#calendar-advent` la orice URL al site-ului cât timp sunteți logați ca admin sau shop manager. Vizitatorii nu pot folosi parametrul.
 
-Ca să vedeți din nou deschiderea automată sau punctul de pe buton, ștergeți din browser datele site-ului (cheile `ssadv_open` și `ssadv_auto` din localStorage).
+Ca să vedeți din nou deschiderea automată sau punctul de pe buton, ștergeți din browser datele site-ului (cheile `ssadv_open`, `ssadv_auto` și `ssadv_cupon` din localStorage).
 
 ## Cum funcționează (consum minim)
 

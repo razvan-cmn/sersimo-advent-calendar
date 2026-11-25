@@ -61,7 +61,11 @@
     box.appendChild(view);
     dlg.appendChild(box);
     dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+    // Curățăm la orice fel de închidere (X, fundal, Esc). Nu ne bazăm doar pe evenimentul „close”,
+    // care în unele browsere nu ajunge mereu.
     dlg.addEventListener('close', cleanup);
+    dlg.addEventListener('cancel', function () { setTimeout(cleanup, 0); });
+    dlg.addEventListener('keydown', function (e) { if (e.key === 'Escape') setTimeout(function () { if (!dlg.open) cleanup(); }, 50); });
     d.body.appendChild(dlg);
   }
 
@@ -136,32 +140,55 @@
       if (C.fab) C.fab.removeAttribute('data-new');
     }
     track('usa_deschisa', { usa: i, prima_data: first });
+    remember(i);
     b.classList.add('is-open');
     setTimeout(function () { showCoupon(i, first); }, first && !reduce ? 650 : 0);
   }
 
+  // Butonul flotant ține minte cuponul de azi: după X, un click duce direct la el.
+  function remember(i) {
+    var c = days[i] || {}, v = { k: Y + '-12-' + i, mare: c.mare || '', nume: c.mic || (c.produs && c.produs.nume) || '' };
+    C.ls('ssadv_cupon', v);
+    if (C.setFab) C.setFab(v);
+  }
+
+  function product(c) {
+    var p = c.produs || {}, name = c.mic || p.nume || '', link = c.link || p.link || '';
+    if (!name && !p.img) return '';
+    var now = c.pret_cupon || p.pret || '', old = c.pret_cupon ? p.pret : p.pret_vechi;
+    var inner =
+      (p.img ? '<img src="' + esc(p.img) + '" alt="" width="76" height="76" decoding="async">' : '') +
+      '<span class="ssadv-pi"><span class="ssadv-pn">' + esc(name) + '</span>' +
+      (now ? '<span class="ssadv-pp">' + (old && old !== now ? '<del>' + esc(old) + '</del> ' : '') + '<b>' + esc(now) + '</b>' +
+        (c.pret_cupon ? ' <small>cu codul</small>' : '') + '</span>' : '') +
+      '</span>';
+    var cls = 'ssadv-prod' + (p.img ? '' : ' is-text');
+    return link ? '<a class="' + cls + '" href="' + esc(link) + '">' + inner + '</a>' : '<div class="' + cls + '">' + inner + '</div>';
+  }
+
   function showCoupon(i, burst) {
-    var c = days[i], shape = c.forma === 'cadou' ? 'cadou' : 'glob';
+    var c = days[i], shape = c.forma === 'cadou' ? 'cadou' : 'glob', link = c.link || (c.produs && c.produs.link) || '';
     view.className = 'ssadv-view ssadv-cv';
     view.innerHTML =
       '<button type="button" class="ssadv-back">&larr; Calendar</button>' +
       '<p class="ssadv-day">Ziua ' + i + ' · ' + esc(c.eticheta || 'surpriza de azi') + '</p>' +
-      '<div class="ssadv-hang"><div class="ssadv-shape ssadv-' + shape + '" style="--c:' + esc(c.culoare || '#c31c72') + '">' +
+      '<div class="ssadv-hang"><div class="ssadv-shape ssadv-' + shape + '" style="--c:' + esc(c.culoare || '#c8102e') + '">' +
         '<div class="ssadv-st">' +
           (c.emoji ? '<span class="ssadv-em" aria-hidden="true">' + esc(c.emoji) + '</span>' : '') +
           '<span class="ssadv-big">' + esc(c.mare) + '</span>' +
-          (c.mic ? '<span class="ssadv-sub">' + esc(c.mic) + '</span>' : '') +
         '</div></div></div>' +
+      product(c) +
       (c.text ? '<p class="ssadv-txt">' + esc(c.text) + '</p>' : '') +
       (c.cod ? '<div class="ssadv-code"><code>' + esc(c.cod) + '</code><button type="button" class="ssadv-copy">Copiază</button></div>' : '') +
-      (c.link ? '<a class="ssadv-cta" href="' + esc(c.link) + '">' + esc(c.buton || 'Vezi oferta') + ' &rarr;</a>' : '') +
+      (link ? '<a class="ssadv-cta" href="' + esc(link) + '">' + esc(c.buton || 'Vezi oferta') + ' &rarr;</a>' : '') +
       '<p class="ssadv-exp">Valabil doar azi · expiră în <b class="ssadv-cd">--:--:--</b></p>';
 
     view.querySelector('.ssadv-back').onclick = showGrid;
     var cp = view.querySelector('.ssadv-copy');
     if (cp) cp.onclick = function () { copy(c.cod, cp); };
-    var a = view.querySelector('.ssadv-cta');
-    if (a) a.onclick = function () { track('click_oferta', { usa: i, link: c.link }); };
+    [].forEach.call(view.querySelectorAll('.ssadv-cta,.ssadv-prod[href]'), function (a) {
+      a.onclick = function () { track('click_oferta', { usa: i, link: link, din: a.className.indexOf('prod') > 0 ? 'produs' : 'buton' }); };
+    });
 
     var cd = view.querySelector('.ssadv-cd');
     function tick() {
@@ -212,22 +239,39 @@
   }
 
   function stopTimer() { clearInterval(timer); timer = null; }
-  function cleanup() { stopTimer(); d.documentElement.classList.remove('ssadv-lock'); }
+  var live = false;
+  function cleanup() {
+    if (!live) return;
+    live = false;
+    stopTimer();
+    d.documentElement.classList.remove('ssadv-lock');
+    // După X: butonul pulsează scurt, ca omul să vadă unde a rămas cuponul.
+    if (C.fab && opened.indexOf(T) >= 0 && !reduce) {
+      C.fab.classList.remove('ssadv-ping');
+      void C.fab.offsetWidth;
+      C.fab.classList.add('ssadv-ping');
+    }
+  }
 
   function open(src) {
     loadDays(function () {
       T = C.debugDay == null && serverDay != null ? serverDay : C.getDay();
       if (!dlg) build();
       opened = C.ls('ssadv_open') || [];
-      showGrid();
+      if (src === 'cupon' && opened.indexOf(T) >= 0 && days[T] && days[T].mare) { remember(T); showCoupon(T, false); }
+      else showGrid();
       if (!dlg.open) {
         d.documentElement.classList.add('ssadv-lock');
         dlg.showModal();
+        live = true;
         track('deschis', { sursa: src || 'buton' });
       }
     });
   }
-  function close() { if (dlg && dlg.open) dlg.close(); }
+  function close() {
+    if (dlg && dlg.open) dlg.close();
+    cleanup();
+  }
 
   w.SSADV = { open: open, close: close };
 })(window, document);
