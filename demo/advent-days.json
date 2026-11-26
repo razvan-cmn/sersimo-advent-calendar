@@ -4,7 +4,7 @@
   "forma": "glob",
   "culoare": "#c8102e",
   "mare": "-10%",
-  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos.",
   "cod": "ADVENT01",
   "buton": "Vezi bradul",
   "produs": {
@@ -20,7 +20,7 @@
   "forma": "glob",
   "culoare": "#1f7a4d",
   "mare": "-15%",
-  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos.",
   "cod": "ADVENT02",
   "buton": "Vezi bradul",
   "produs": {
@@ -36,7 +36,7 @@
   "forma": "cadou",
   "culoare": "#c9962b",
   "mare": "-20%",
-  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos.",
   "cod": "ADVENT03",
   "buton": "Vezi bradul",
   "produs": {
@@ -53,7 +53,7 @@
   "forma": "glob",
   "culoare": "#0f5132",
   "mare": "-12%",
-  "text": "Doar azi, 12% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 12% reducere cu codul de mai jos.",
   "cod": "ADVENT04",
   "buton": "Vezi bradul",
   "produs": {
@@ -69,7 +69,7 @@
   "forma": "glob",
   "culoare": "#b3122e",
   "mare": "-25%",
-  "text": "Doar azi, 25% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 25% reducere cu codul de mai jos.",
   "cod": "ADVENT05",
   "buton": "Vezi bradul",
   "produs": {
@@ -85,7 +85,7 @@
   "forma": "cadou",
   "culoare": "#c8102e",
   "mare": "-10%",
-  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos.",
   "cod": "ADVENT06",
   "buton": "Vezi bradul",
   "produs": {
@@ -102,7 +102,7 @@
   "forma": "glob",
   "culoare": "#1f7a4d",
   "mare": "-15%",
-  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos.",
   "cod": "ADVENT07",
   "buton": "Vezi bradul",
   "produs": {
@@ -118,7 +118,7 @@
   "forma": "glob",
   "culoare": "#c9962b",
   "mare": "-20%",
-  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos.",
   "cod": "ADVENT08",
   "buton": "Vezi bradul",
   "produs": {
@@ -134,7 +134,7 @@
   "forma": "cadou",
   "culoare": "#0f5132",
   "mare": "-12%",
-  "text": "Doar azi, 12% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 12% reducere cu codul de mai jos.",
   "cod": "ADVENT09",
   "buton": "Vezi bradul",
   "produs": {
@@ -150,7 +150,7 @@
   "forma": "glob",
   "culoare": "#b3122e",
   "mare": "-25%",
-  "text": "Doar azi, 25% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 25% reducere cu codul de mai jos.",
   "cod": "ADVENT10",
   "buton": "Vezi bradul",
   "produs": {
@@ -166,7 +166,7 @@
   "forma": "glob",
   "culoare": "#c8102e",
   "mare": "-10%",
-  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos.",
   "cod": "ADVENT11",
   "buton": "Vezi bradul",
   "produs": {
@@ -183,7 +183,7 @@
   "forma": "cadou",
   "culoare": "#1f7a4d",
   "mare": "-15%",
-  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos.",
   "cod": "ADVENT12",
   "buton": "Vezi bradul",
   "produs": {
@@ -199,7 +199,7 @@
   "forma": "glob",
   "culoare": "#c9962b",
   "mare": "-20%",
-  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos.",
   "cod": "ADVENT13",
   "buton": "Vezi bradul",
   "produs": {
@@ -215,7 +215,7 @@
   "forma": "glob",
   "culoare": "#0f5132",
   "mare": "-12%",
-  "text": "Doar azi, 12% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 12% reducere cu codul de mai jos.",
   "cod": "ADVENT14",
   "buton": "Vezi bradul",
   "produs": {
@@ -232,7 +232,7 @@
   "forma": "cadou",
   "culoare": "#b3122e",
   "mare": "-25%",
-  "text": "Doar azi, 25% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 25% reducere cu codul de mai jos.",
   "cod": "ADVENT15",
   "buton": "Vezi bradul",
   "produs": {
@@ -248,7 +248,7 @@
   "forma": "glob",
   "culoare": "#c8102e",
   "mare": "-10%",
-  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos.",
   "cod": "ADVENT16",
   "buton": "Vezi bradul",
   "produs": {
@@ -264,7 +264,7 @@
   "forma": "glob",
   "culoare": "#1f7a4d",
   "mare": "-15%",
-  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos.",
   "cod": "ADVENT17",
   "buton": "Vezi bradul",
   "produs": {
@@ -280,7 +280,7 @@
   "forma": "cadou",
   "culoare": "#c9962b",
   "mare": "-20%",
-  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos.",
   "cod": "ADVENT18",
   "buton": "Vezi bradul",
   "produs": {
@@ -296,7 +296,7 @@
   "forma": "glob",
   "culoare": "#0f5132",
   "mare": "-12%",
-  "text": "Doar azi, 12% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 12% reducere cu codul de mai jos.",
   "cod": "ADVENT19",
   "buton": "Vezi bradul",
   "produs": {
@@ -313,7 +313,7 @@
   "forma": "glob",
   "culoare": "#b3122e",
   "mare": "-25%",
-  "text": "Doar azi, 25% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 25% reducere cu codul de mai jos.",
   "cod": "ADVENT20",
   "buton": "Vezi bradul",
   "produs": {
@@ -329,7 +329,7 @@
   "forma": "cadou",
   "culoare": "#c8102e",
   "mare": "-10%",
-  "text": "Doar azi, 10% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 10% reducere cu codul de mai jos.",
   "cod": "ADVENT21",
   "buton": "Vezi bradul",
   "produs": {
@@ -345,7 +345,7 @@
   "forma": "glob",
   "culoare": "#1f7a4d",
   "mare": "-15%",
-  "text": "Doar azi, 15% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 15% reducere cu codul de mai jos.",
   "cod": "ADVENT22",
   "buton": "Vezi bradul",
   "produs": {
@@ -362,7 +362,7 @@
   "forma": "glob",
   "culoare": "#c9962b",
   "mare": "-20%",
-  "text": "Doar azi, 20% reducere cu codul de mai jos. Exemplu — textul real îl puneți voi.",
+  "text": "Doar azi, 20% reducere cu codul de mai jos.",
   "cod": "ADVENT23",
   "buton": "Vezi bradul",
   "produs": {
